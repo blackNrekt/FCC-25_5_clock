@@ -1,25 +1,42 @@
 import logo from './logo.svg';
 import './App.css';
+import React, { useState } from 'react';
+
+
 
 function App() {
+
+  const [displayTime, setDisplayTime] = useState(25*60);
+  const [breakTime, setbreakTime] = useState(5*60);
+  
+  const formatTime = (time) => {
+    let minutes = Math.floor(time/60);
+    let seconds = time % 60;
+    return (
+      (minutes<10? "0"+ minutes : minutes) + ":" +(seconds<10? "0"+seconds : seconds)
+    );
+  };
+
+  const changeTime = (amount,type) => {
+    if (type==='break') {
+      setbreakTime((prev) => prev+amount);
+    }
+  };
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <div>
+      <ChangeLength 
+        title={"Break Length"}
+        changeTime={changeTime}
+        type={"break"}
+        time={breakTime}
+        formatTime={formatTime}
+      />
+      <h1>{formatTime(displayTime)}</h1>
+    </div>  
+  );    
 }
 
 export default App;
+
