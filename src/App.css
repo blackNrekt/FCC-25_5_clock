@@ -1,6 +1,143 @@
-.time-sets{
-  display: grid;
-  grid-template-columns: 25px-250px-25px;
-  justify-items: center;
+:root {
+  --bg: #eddcd2;
+  --ff: 'Roboto', sans-serif;
+  --txt: #383838;
+  --ac: #cb997e;
+  --shd: rgba(0, 0, 0, 0.1);
+  --bs: 0 0 10px rgba(0, 0, 0, 0.2);
+  --mw: 400px;
+  --md: 768px;
+}
+
+body {
+  background-color: var(--bg);
+  font-family: var(--ff);
+  display: flex;
+  flex-direction: column;
   align-items: center;
+  justify-content: center;
+  min-height: 100vh;  
+}
+
+
+.set-container,
+.break-container,
+.session-container {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--ac);
+  color: var(--txt);
+  border-radius: 10px;
+  width: auto;
+  padding: 2rem;  
+}
+
+.set-container {
+  box-shadow: var(--bs);
+  white-space: break-spaces;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.timer-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #a5a58d;
+  color: #0D0D0D;
+  border-radius: 10px;
+  width: auto;
+  height: auto;
+  padding: 2rem;
+  margin-top: 10px;
+  box-shadow: 0 0 10px var(--shd);
+}
+
+.title {
+  color: var(--txt);
+  text-align: center;
+}
+
+#session-label,
+#break-label,
+#session-length,
+#break-length {
+  text-align: center;
+  margin: 10px;
+}
+
+.timer-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  max-width: var(--mw);
+  margin-top: 20px;  
+  border: none;
+  border-radius: 4px; 
+}
+
+.time-set {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin: 0 20px;
+}
+
+.time-set-title {
+  font-size: 2.4rem;
+  font-weight: 200;  
+  margin: 1rem;
+}
+
+button {
+  background-color: transparent;    
+  cursor: pointer;
+  font-size: 2;
+}
+
+@media screen and (max-width: 480px) {
+  .set-container,
+  .break-container,
+  .session-container {
+    flex-direction: column;
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  
+  .set-container h3 {
+    font-size: 1.5rem;
+  }
+  
+  .timer-buttons {
+    flex-direction: column;
+  }
+  
+  .time-set {
+    margin: 10px 0;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .set-container,
+  .break-container,
+  .session-container {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 1rem;
+  }
+
+  .time-set {
+    margin: 1rem 0;
+  }
+
+  .timer-buttons {
+    flex-direction: column;
+    align-items: center;
+    margin-top: 1rem;
+  }
 }
